@@ -13,7 +13,7 @@ private:
 public:
     
     // Construtor com parâmetros
-    Etapa(unsigned int id, std::string& cronograma, std::string& status, 
+    Etapa(std::string& cronograma, std::string& status, 
          std::string& statusProjeto);
 
     // Getters

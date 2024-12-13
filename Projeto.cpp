@@ -1,9 +1,11 @@
 #include "Projeto.hpp"
 
+unsigned int Projeto::id = 0;
 
-Projeto::Projeto(unsigned int id, Cliente& cliente,  std::string& dataInicio, 
+Projeto::Projeto(Cliente& cliente,  std::string& dataInicio, std::string prazo,
                    std::string& descricao,  std::string& contrato)
-    : id(id), cliente(cliente), dataInicio(dataInicio), descricao(descricao), contrato(contrato) {
+    : cliente(cliente), dataInicio(dataInicio), prazo(prazo), descricao(descricao), contrato(contrato)
+{
 }
 
 unsigned int Projeto::getId() const {

@@ -10,12 +10,13 @@ private:
     unsigned int id; 
     Cliente cliente; 
     std::string dataInicio; 
+    std::string prazo;
     std::string descricao; 
     std::string contrato; 
     std::vector<Desenvolvedor> desenv;
 
 public: 
-    Projeto(unsigned int id, Cliente cliente, std::string dataInicio, std::string descricao, std::string contrato); 
+    Projeto(Cliente cliente, std::string dataInicio, std::string prazo, std::string descricao, std::string contrato); 
 
     // Getter e Setter para 'id'
     unsigned int getId() const;
@@ -37,6 +38,8 @@ public:
     const std::string& getContrato() const;
     void setContrato(const std::string& novoContrato);
 
+    // Avalia se desenvolvedor esta cadastrado no projeto (no vector desenv). 
+    // Se não estiver, adiciona ao vector e retorna 1. Retorna 0 caso contrário. 
     int cadastrarDesenvolvedor(const Desenvolvedor& desenvolvedor); 
 
 }

@@ -1,8 +1,11 @@
 #include "Cliente.hpp"
 
-Conta::Conta(unsigned int id, std::string nome, std::string cpfCnpj, std::string email, std::string  telefone, std::string contato):
-id(id), nome(nome), cpfCnpj(cpfCnpj), email(email), telefone(telefone), contato(contato)
+unsigned int Cliente::id=0; 
+
+Conta::Conta(std::string nome, std::string cpfCnpj, std::string email, std::string  telefone, std::string contato):
+nome(nome), cpfCnpj(cpfCnpj), email(email), telefone(telefone), contato(contato)
 {
+    id++;
 }
 
 // Getter e Setter para 'nome'

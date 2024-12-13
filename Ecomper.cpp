@@ -1,8 +1,12 @@
-#include "Ecomper.h"
+#include "Ecomper.hpp"
+
+unsigned int Ecomper::id = 0;
 
 // Construtor com parâmetros
-Ecomper::Ecomper(unsigned int id,  std::string& nome,  std::string& cpf, std::string& email,  std::string& cargo)
-    : id(id), nome(nome), cpf(cpf), email(email), cargo(cargo) {
+Ecomper::Ecomper(std::string& nome,  std::string& cpf, std::string& email,  std::string& cargo)
+    : nome(nome), cpf(cpf), email(email), cargo(cargo) 
+{
+    id++;
 }
 
 // Getters

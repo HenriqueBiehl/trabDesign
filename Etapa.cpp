@@ -1,9 +1,13 @@
-#include "Etapa.h"
+#include "Etapa.hpp"
+
+unsigned int Etapa::id = 0;
 
 // Construtor com parâmetros
-Etapa::Etapa(unsigned int id, std::string& cronograma, std::string& status, 
+Etapa::Etapa(std::string& cronograma, std::string& status, 
              std::string& statusProjeto)
-    : id(id), cronograma(cronograma), status(status), statusProjeto(statusProjeto) {
+    :cronograma(cronograma), status(status), statusProjeto(statusProjeto) 
+{
+    id++;
 }
 
 // Getters

@@ -13,7 +13,7 @@ private:
     std::string cargo; 
 
 public:
-    Ecomper(unsigned int id, std::string nome, std::string cpf, std::string email, std::string cargo)
+    Ecomper(std::string nome, std::string cpf, std::string email, std::string cargo)
 
     // Getters
     unsigned int getId() const;

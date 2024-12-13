@@ -13,7 +13,7 @@ protected:
     std::contato; 
 
 public:
-    Conta(std::string nome, std::string cpfCnpj, std::string email, std::string  telefone, std::string contato);
+    Cliente(std::string nome, std::string cpfCnpj, std::string email, std::string  telefone, std::string contato);
     
     // Getter e Setter para 'nome'
     const std::string getNome() const;

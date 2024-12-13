@@ -1,9 +1,9 @@
 #pragma once
-#include "Ecomper.h"
-
+#include "Ecomper.hpp"
+ 
 class Desenvolvedor : public Ecomper {
 public:
     // Construtor usando o construtor da classe base
-    Desenvolvedor(unsigned int id,  std::string& nome,  std::string& cpf, 
+    Desenvolvedor(std::string& nome,  std::string& cpf, 
                    std::string& email,  std::string& cargo)
 };
