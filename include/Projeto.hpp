@@ -18,6 +18,9 @@ private:
 public: 
     Projeto(Cliente cliente, std::string dataInicio, std::string prazo, std::string descricao, std::string contrato); 
 
+    //Construtor vazio
+    Projeto(); 
+
     // Getter e Setter para 'id'
     unsigned int getId() const;
     void setId(unsigned int novoId);
@@ -42,4 +45,4 @@ public:
     // Se não estiver, adiciona ao vector e retorna 1. Retorna 0 caso contrário. 
     int cadastrarDesenvolvedor(const Desenvolvedor& desenvolvedor); 
 
-}
+};

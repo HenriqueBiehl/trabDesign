@@ -1,9 +1,6 @@
 #include "Ecomper.hpp"
-<<<<<<< HEAD
 
 unsigned int Ecomper::id = 0;
-=======
->>>>>>> 3c62fb1fb2bae7dad245603f0f59dd11997a0b67
 
 // Construtor com parâmetros
 Ecomper::Ecomper(std::string& nome,  std::string& cpf, std::string& email,  std::string& cargo)

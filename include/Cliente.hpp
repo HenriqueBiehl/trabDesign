@@ -2,15 +2,15 @@
 #include <iostream> 
 #include <string> 
 
-class Cliente{
+class Cliente {
     
 protected:
-    unsigned int id;
+    static unsigned int id;
     std::string nome;
     std::string cpfCnpj;
     std::string email;
     std::string telefone;
-    std::contato; 
+    std::string contato;
 
 public:
     Cliente(std::string nome, std::string cpfCnpj, std::string email, std::string  telefone, std::string contato);
@@ -35,4 +35,4 @@ public:
 
     void setTelefone(const std::string& novoTelefone);
 
-}
+};

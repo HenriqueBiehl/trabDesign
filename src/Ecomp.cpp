@@ -1,12 +1,8 @@
-#pragma once 
 #include "Ecomp.hpp" 
 
+Projeto Ecomp::cadastrarProjeto(Cliente& cliente, std::string dataInicio, std::string prazo, std::string descricao, std::string contrato){
 
-Projeto Ecomp::cadastrarProjeto(Cliente& cliente, std::string dataInicio, std::prazo, std::descricao, std::contrato){
-
-    Projeto::p; 
-
-    p = Projeto(cliente, dataInicio, prazo, descricao, contrato); 
+    Projeto p(cliente, dataInicio, prazo, descricao, contrato); 
 
     associarProjeto(p);
 
@@ -25,5 +21,6 @@ Projeto Ecomp::selecionarProjeto(unsigned int idProjeto){
             return p; 
     }
 
-    return NULL;
+    // Retorna objeto vazio
+    return Projeto();
 }

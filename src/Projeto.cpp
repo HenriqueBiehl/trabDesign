@@ -8,6 +8,17 @@ Projeto::Projeto(Cliente& cliente,  std::string& dataInicio, std::string prazo,
 {
 }
 
+// Construtor vazio
+Projeto::Projeto()
+    : cliente(Cliente("", "", "", "", "")), // Atribuindo um cliente padrão
+      dataInicio(""),
+      prazo(""),
+      descricao(""),
+      contrato("")
+{
+}
+
+
 unsigned int Projeto::getId() const {
     return id;
 }

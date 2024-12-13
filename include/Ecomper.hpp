@@ -6,14 +6,14 @@
 class Ecomper{
 
 private:
-    unsigned int id;
+    static unsigned int id;
     std::string nome;
     std::string cpf; 
     std::string email; 
     std::string cargo; 
 
 public:
-    Ecomper(std::string nome, std::string cpf, std::string email, std::string cargo)
+    Ecomper(std::string nome, std::string cpf, std::string email, std::string cargo);
 
     // Getters
     unsigned int getId() const;
@@ -28,4 +28,4 @@ public:
     void setCpf(const std::string& novoCpf);
     void setEmail(const std::string& novoEmail);
     void setCargo(const std::string& novoCargo);
-}
+};

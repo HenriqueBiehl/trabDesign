@@ -15,10 +15,10 @@ public:
 
     void exibeTelaCadastro(); 
     
-    Projeto cadastrarProjeto(Cliente& cliente, std::string dataInicio, std::prazo, std::descricao, std::contrato);
+    Projeto cadastrarProjeto(Cliente& cliente, std::string dataInicio, std::string prazo, std::string descricao, std::string contrato);
 
     void associarProjeto(const Projeto& projeto);
 
     Projeto selecionarProjeto(unsigned int idProjeto);
 
-}
+};

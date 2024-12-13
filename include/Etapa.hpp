@@ -28,4 +28,4 @@ public:
     void setStatus(const std::string& novoStatus);
     void setStatusProjeto(const std::string& novoStatusProjeto);
 
-}
+};

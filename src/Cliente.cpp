@@ -2,7 +2,7 @@
 
 unsigned int Cliente::id=0; 
 
-Conta::Conta(std::string nome, std::string cpfCnpj, std::string email, std::string  telefone, std::string contato):
+Cliente::Cliente(std::string nome, std::string cpfCnpj, std::string email, std::string  telefone, std::string contato):
 nome(nome), cpfCnpj(cpfCnpj), email(email), telefone(telefone), contato(contato)
 {
     id++;
