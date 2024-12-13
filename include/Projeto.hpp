@@ -5,6 +5,7 @@
 #include "Cliente.hpp"
 #include "Desenvolvedor.hpp"
 #include "ItemFiscal.hpp"
+#include "Etapa.hpp"
 
 class Projeto{
 private: 
@@ -16,6 +17,7 @@ private:
     std::string contrato; 
     std::vector<Desenvolvedor> devs;
     std::vector<ItemFiscal> itensFisc; 
+    std::vector<Etapa>  etapasProjeto;
 
 public: 
     Projeto(Cliente cliente, std::string dataInicio, std::string prazo, std::string descricao, std::string contrato); 
@@ -48,4 +50,8 @@ public:
     int cadastrarDesenvolvedor(Desenvolvedor& desenvolvedor); 
 
     void associarItemFiscal(const ItemFiscal& fisc);
+
+    Etapa cadastrarEtapaDesenvolvimento(std::string cronograma, std::string statusProjeto); 
+
+    void associarEtapa(Etapa& etapa);
 };

@@ -11,7 +11,10 @@ Relatorio::Relatorio(const std::string& tipo) : tipo(tipo) {
 void Relatorio::gerarRelatorioAtividade() const {
     std::cout << "Gerando relatório de atividades...\n";
     for (const auto& atividade : atividades) {
-        std::cout << "Atividade: " << atividade.getNome() << "\n";
+        std::cout << "Atividade -" << atividade.getLocal() << "\n";
+        std::cout << "  Objetivo:" << atividade.getObjetivo() << std::endl;
+        std::cout << "  Duracao: " << atividade.getDuracao() << std::endl;
+        std::cout << "  Resumo:  " << atividade.getResumoAtividade() << std::endl;
     }
 }
 
@@ -50,7 +53,10 @@ void Relatorio::visualizarRelatorio() const {
 
 void Relatorio::visualizarRelatorioAtividades() const {
     for (const auto& atividade : atividades) {
-        std::cout << "Atividade: " << atividade.getNome() << "\n";
+        std::cout << "Atividade -" << atividade.getLocal() << "\n";
+        std::cout << "  Objetivo:" << atividade.getObjetivo() << std::endl;
+        std::cout << "  Duracao: " << atividade.getDuracao() << std::endl;
+        std::cout << "  Resumo:  " << atividade.getResumoAtividade() << std::endl;
     }
 }
 

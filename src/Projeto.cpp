@@ -75,3 +75,16 @@ int Projeto::cadastrarDesenvolvedor(Desenvolvedor& desenvolvedor){
 void Projeto::associarItemFiscal(const ItemFiscal& fisc){
     this->itensFisc.push_back(fisc);
 }
+
+Etapa Projeto::cadastrarEtapaDesenvolvimento(std::string cronograma, std::string statusProjeto){
+
+    Etapa e = Etapa(cronograma, statusProjeto);
+
+    this->associarEtapa(e); 
+
+    return e;
+}
+
+void Projeto::associarEtapa(Etapa& etapa){
+    this->etapasProjeto.push_back(etapa);
+}

@@ -8,8 +8,7 @@ public:
     static Participante criarParticipante(Ecomper& e);
 
     // Construtor com parâmetros
-    Participante(unsigned int id,  std::string  nome,  std::string cpf,  std::string email, 
-                  std::string cargo /*, const std::string& matricula, const std::string& curso*/);
+    Participante(unsigned int id,  std::string  nome,  std::string cpf,  std::string email, std::string cargo /*, const std::string& matricula, const std::string& curso*/);
 
 /*
     // Getters

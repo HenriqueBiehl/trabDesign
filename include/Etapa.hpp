@@ -8,13 +8,11 @@ private:
     static unsigned int id; 
     std::string cronograma;
     std::string status; 
-    std::string statusProjeto; 
 
 public:
     
     // Construtor com parâmetros
-    Etapa(std::string& cronograma, std::string& status, 
-         std::string& statusProjeto);
+    Etapa(std::string& cronograma, std::string& status);
 
     // Getters
     unsigned int getId() const;

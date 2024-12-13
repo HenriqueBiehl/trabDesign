@@ -109,3 +109,47 @@ ItemFiscal Ecomp::cadastrarItemFiscal(std::string tipoItemFiscal, std::string da
 
     return fisc;
 }
+
+
+Etapa Ecomp::cadastrarEtapaDesenvolvimento(unsigned int idProjeto, std::string cronograma, std::string statusProjeto){
+    
+    Projeto *p = selecionarProjeto(idProjeto);
+
+    Etapa e = p->cadastrarEtapaDesenvolvimento(cronograma, statusProjeto);
+
+    return e;
+}
+
+
+Atividade Ecomp::cadastrarAtividade( const std::string& duracao, const std::string& local, const std::string& objetivo, const std::string& resumo){
+
+    Atividade a = Atividade(duracao, local, objetivo, resumo);
+
+    return a;
+}
+
+int Ecomp::adicionarParticipanteAtividade(Atividade a, unsigned int idEcomper){
+
+    Ecomper *e = selecionarEcomper(idEcomper);
+
+    if(e == NULL)
+        return 0;
+
+    Participante participante(e->getId(), e->getNome(), e->getCpf(), e->getEmail(), e->getCargo());
+
+    a.associarParticipante(participante);
+
+    return 1;
+}
+
+
+Ecomper* Ecomp::selecionarEcomper(unsigned int idEcomper){
+    
+    for (auto& e : this->membros) {
+        
+        if(e.getId() == idEcomper)
+            return &e; 
+    }
+
+    return NULL;
+}
