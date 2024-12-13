@@ -1,6 +1,6 @@
 # Definições de variáveis
 CXX = g++
-CXXFLAGS = -Wall -I./include
+CXXFLAGS = -Wall -g -I./include
 
 # Listar os arquivos fonte e os objetos correspondentes
 SOURCES = $(wildcard src/*.cpp)

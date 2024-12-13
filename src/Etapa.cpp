@@ -34,3 +34,12 @@ void Etapa::setCronograma(const std::string& novoCronograma) {
 void Etapa::setStatus(const std::string& novoStatus) {
     status = novoStatus;
 }
+
+
+void Etapa::imprimirDados() {
+
+    std::cout << "ID: " << id << std::endl;
+    std::cout << "Cronograma: " << cronograma << std::endl;
+    std::cout << "Status: " << status << std::endl;
+}
+

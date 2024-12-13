@@ -2,7 +2,6 @@
 #include <iostream>
 #include <string>
 
-
 class Ecomper{
 
 private:
@@ -28,4 +27,6 @@ public:
     void setCpf(const std::string& novoCpf);
     void setEmail(const std::string& novoEmail);
     void setCargo(const std::string& novoCargo);
+
+    void imprimirDados();
 };

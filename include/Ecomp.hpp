@@ -24,7 +24,7 @@ public:
 
     Ecomp();
 
-    int cadastrarMembro(std::string nome, std::string cpf, std::string email, std::string cargo);
+    Ecomper cadastrarMembro(std::string nome, std::string cpf, std::string email, std::string cargo);
 
     void associarMembro(const Ecomper& ecomper);
     
@@ -53,5 +53,9 @@ public:
     int adicionarParticipanteAtividade(Atividade a, unsigned int idEcomper);
 
     Ecomper* selecionarEcomper(unsigned int idEcomper);
+    
+    void imprimirProjetos();
+    
+    void imprimirDesenvolvedores();
 
 };

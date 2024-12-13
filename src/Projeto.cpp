@@ -5,7 +5,10 @@ unsigned int Projeto::id = 0;
 Projeto::Projeto(Cliente cliente,  std::string dataInicio, std::string prazo,
                    std::string descricao,  std::string contrato)
     : cliente(cliente), dataInicio(dataInicio), prazo(prazo), descricao(descricao), contrato(contrato)
-{
+{   
+    devs = {};
+    itensFisc = {};
+    etapasProjeto = {};
     id++;
 }
 
@@ -66,7 +69,7 @@ int Projeto::cadastrarDesenvolvedor(Desenvolvedor& desenvolvedor){
             return 0; 
 
     }
-
+    
     this->devs.push_back(desenvolvedor);
 
     return 1;
@@ -87,4 +90,45 @@ Etapa Projeto::cadastrarEtapaDesenvolvimento(std::string cronograma, std::string
 
 void Projeto::associarEtapa(Etapa& etapa){
     this->etapasProjeto.push_back(etapa);
+}
+
+void Projeto::imprimirDados(){
+    std::cout << std::endl << "--- Dados Projeto ---" << std::endl; 
+
+    std::cout << "ID:" << id << std::endl; 
+    std::cout << "Data Inicio:" << dataInicio << std::endl; 
+    std::cout << "Prazo:" << prazo << std::endl; 
+    std::cout << "Descrição:" << descricao << std::endl;
+    std::cout << "Contrato:" << contrato << std::endl; 
+    
+    std::cout << std::endl; 
+
+    std::cout << "Cliente:" << std::endl;
+    cliente.imprimirDados();
+
+    std::cout << std::endl; 
+
+    std::cout << "Desenvolvedores:" << std::endl;
+    for (auto& d : this->devs) {
+        d.imprimirDados(); 
+    }
+
+    std::cout << std::endl; 
+
+    std::cout << "Itens Fiscais:" << std::endl;
+    for (auto& f : this->itensFisc) {
+        f.imprimirDados(); 
+    }
+
+    std::cout << std::endl; 
+    
+    std::cout << "Etapas:" << std::endl;
+    for (auto& e : this->etapasProjeto) {
+        e.imprimirDados(); 
+    }
+
+    std::cout << std::endl; 
+
+    std::cout << "---------------------" << std::endl; 
+
 }

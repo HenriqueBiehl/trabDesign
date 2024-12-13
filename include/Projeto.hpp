@@ -54,4 +54,6 @@ public:
     Etapa cadastrarEtapaDesenvolvimento(std::string cronograma, std::string statusProjeto); 
 
     void associarEtapa(Etapa& etapa);
+
+    void imprimirDados();
 };

@@ -38,3 +38,9 @@ ItemFiscal ItemFiscal::cadastrarItemFiscal(const std::string& tipoItemFiscal, co
     // Implementação fictícia: no mundo real, você incluiria lógica para validar ou associar o idProjeto
     return ItemFiscal(data, valor, tipoItemFiscal);
 }
+
+void ItemFiscal::imprimirDados(){
+    std::cout << "Data: " << data << std::endl;
+    std::cout << "Valor: " << valor << std::endl;
+    std::cout << "Tipo: " << tipo << std::endl;
+}

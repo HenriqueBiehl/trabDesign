@@ -5,12 +5,12 @@ Ecomp::Ecomp()
 }
 
 
-int Ecomp::cadastrarMembro(std::string nome, std::string cpf, std::string email, std::string cargo){
+Ecomper Ecomp::cadastrarMembro(std::string nome, std::string cpf, std::string email, std::string cargo){
     Ecomper mem = Ecomper(nome, cpf, email, cargo);
     
     associarMembro(mem);
 
-    return 1;
+    return mem;
 } 
 
 
@@ -37,9 +37,9 @@ void Ecomp::associarProjeto(const Projeto& projeto){
 Projeto* Ecomp::selecionarProjeto(unsigned int idProjeto){
     
     for (auto& p : this->proj) {
-        
-        if(p.getId() == idProjeto)
+        if(p.getId() == idProjeto){
             return &p; 
+        }
     }
 
     return NULL;
@@ -152,4 +152,24 @@ Ecomper* Ecomp::selecionarEcomper(unsigned int idEcomper){
     }
 
     return NULL;
+}
+
+void Ecomp::imprimirProjetos(){
+
+    std::cout << "**** Projetos ****" << std::endl;
+    for (auto& p : this->proj) {
+        p.imprimirDados(); 
+    }
+    std::cout << std::endl;
+
+}
+
+void Ecomp::imprimirDesenvolvedores(){
+
+    std::cout << "---- Desenvolvedores ----" << std::endl;
+    for (auto& d : this->devs) {
+        d.imprimirDados(); 
+    }
+    std::cout << std::endl;
+
 }

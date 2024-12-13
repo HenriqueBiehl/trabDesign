@@ -25,5 +25,5 @@ public:
     void setCronograma(const std::string& novoCronograma);
     void setStatus(const std::string& novoStatus);
     void setStatusProjeto(const std::string& novoStatusProjeto);
-
+    void imprimirDados();
 };

@@ -48,3 +48,12 @@ const std::string Cliente::getTelefone() const {
 void Cliente::setTelefone(const std::string& novoTelefone) {
     telefone = novoTelefone;
 }
+
+void Cliente::imprimirDados() {
+        std::cout << "ID: " << id << std::endl;
+        std::cout << "Nome: " << nome << std::endl;
+        std::cout << "CPF/CNPJ: " << cpfCnpj << std::endl;
+        std::cout << "Email: " << email << std::endl;
+        std::cout << "Telefone: " << telefone << std::endl;
+        std::cout << "Contato: " << contato << std::endl;
+}

@@ -50,3 +50,11 @@ void Ecomper::setEmail(const std::string& novoEmail) {
 void Ecomper::setCargo(const std::string& novoCargo) {
     cargo = novoCargo;
 }
+
+void Ecomper::imprimirDados(){
+    std::cout << "ID: " << id << std::endl;
+    std::cout << "Nome: " << nome << std::endl;
+    std::cout << "CPF: " << cpf << std::endl;
+    std::cout << "Email: " << email << std::endl;
+    std::cout << "Cargo: " << cargo << std::endl;
+}

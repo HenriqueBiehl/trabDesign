@@ -36,5 +36,7 @@ public:
     const std::string getTelefone() const;
 
     void setTelefone(const std::string& novoTelefone);
+    
+    void imprimirDados();
 
 };

@@ -2,6 +2,7 @@
 #pragma once
 #include <string>
 #include <ctime>
+#include <iostream>
 
 class ItemFiscal {
 private:
@@ -24,6 +25,7 @@ public:
     void setTipo(const std::string& novoTipo);
 
     // Métodos
-    static ItemFiscal cadastrarItemFiscal(const std::string& tipoItemFiscal, const std::string& data, 
-                                          float valor, int idProjeto);
+    static ItemFiscal cadastrarItemFiscal(const std::string& tipoItemFiscal, const std::string& data, float valor, int idProjeto);
+
+    void imprimirDados();
 };
