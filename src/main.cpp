@@ -11,14 +11,16 @@
 #include "Projeto.hpp"
 #include "Relatorio.hpp"
 
+using namespace std;
+
 int main() {
     int opcao;
-    Ecomp ecomp();
-    Cliente cliente_1();
-    cliente_1.setNome("Winston Smith")
-    cliente_1.setCpfCnpj("1234567890")
-    cliente_1.setEmail("winston@bigbrothermail.com")
-    cliente_1.setTelefone("(206) 342-8631")
+    Ecomp Ecomp;
+    Cliente cliente_1;
+    cliente_1.setNome("Winston Smith"); //Based
+    cliente_1.setCpfCnpj("1234567890");
+    cliente_1.setEmail("winston@bigbrothermail.com");
+    cliente_1.setTelefone("(206) 342-8631");
 
     do {
         cout << "\nMenu de Opções:\n";
@@ -35,33 +37,37 @@ int main() {
 
         switch (opcao) {
             case 0:
-                cout << "Saindo...\n";
-                break;
-
+                {
+                    cout << "Saindo...\n";
+                    break;
+                }
             case 1:
-                String dataInicio, prazo, descricao, contrato; 
-                cout << "Escolhido a opção: Cadastrar Projeto. Digite as informações a seguir:\n";
+                {
+                    string dataInicio, prazo, descricao, contrato; 
+                    cout << "Escolhido a opção: Cadastrar Projeto. Digite as informações a seguir:\n";
 
-                cout << "Data de inicio: ";
-                cin << dataInicio;
+                    cout << "Data de inicio: ";
+                    cin >> dataInicio;
 
-                cout << "Prazo: ";
-                cin << prazo;
+                    cout << "Prazo: ";
+                    cin >> prazo;
 
-                cout << "Descrição: ";
-                cin << descricao;
+                    cout << "Descrição: ";
+                    cin >> descricao;
 
-                cout << "Contrato";
-                cin << contrato;
+                    cout << "Contrato";
+                    cin >> contrato;
 
-                ecomp.cadastrarProjeto(cliente_1, dataInicio, prazo, descricao, contrato);
+                    Ecomp.cadastrarProjeto(cliente_1, dataInicio, prazo, descricao, contrato);
 
-                cout << "Projeto cadastrado com sucesso!\n"
-                break;
-
+                    cout << "Projeto cadastrado com sucesso!\n";
+                    break;
+                }
             default:
-                cout << "Opção inválida! Tente novamente.\n";
-                break;
+                {
+                    cout << "Opção inválida! Tente novamente.\n";
+                    break;
+                }
         }
 
     } while (opcao != 0);

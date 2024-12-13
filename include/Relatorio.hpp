@@ -22,6 +22,9 @@ public:
     void adicionarItemFiscalRelatorio(const ItemFiscal& f);
     void gerarRelatorioPDF() const;
     void visualizarRelatorio() const;
+    void visualizarRelatorioAtividades() const;
+    void visualizarRelatorioItensFiscais() const;
+
 
     // Getters e Setters
     const std::string& getTipo() const;

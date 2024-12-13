@@ -2,22 +2,17 @@
 
 unsigned int Projeto::id = 0;
 
-Projeto::Projeto(Cliente& cliente,  std::string& dataInicio, std::string prazo,
-                   std::string& descricao,  std::string& contrato)
+Projeto::Projeto(Cliente cliente,  std::string dataInicio, std::string prazo,
+                   std::string descricao,  std::string contrato)
     : cliente(cliente), dataInicio(dataInicio), prazo(prazo), descricao(descricao), contrato(contrato)
 {
+    id++;
 }
 
 // Construtor vazio
 Projeto::Projeto()
-    : cliente(Cliente("", "", "", "", "")), // Atribuindo um cliente padrão
-      dataInicio(""),
-      prazo(""),
-      descricao(""),
-      contrato("")
 {
 }
-
 
 unsigned int Projeto::getId() const {
     return id;
@@ -63,19 +58,20 @@ void Projeto::setContrato(const std::string& novoContrato) {
     contrato = novoContrato;
 }
 
-int cadastrarDesenvolvedor(const Desenvolvedor& desenvolvedor){
+int Projeto::cadastrarDesenvolvedor(Desenvolvedor& desenvolvedor){
 
-    for (const auto& dev : this->desenv) {
+    for (auto& d : this->devs) {
         
-        if(dev.getId() == desenvolvedor.getId())
-            break; 
+        if(desenvolvedor.getId() == d.getId())
+            return 0; 
 
     }
 
-    if(dev == NULL){
-        vector.push_back(desenvolvedor);
-        return 1; 
-    }
+    this->devs.push_back(desenvolvedor);
 
-    return 0;
+    return 1;
+}
+
+void Projeto::associarItemFiscal(const ItemFiscal& fisc){
+    this->itensFisc.push_back(fisc);
 }

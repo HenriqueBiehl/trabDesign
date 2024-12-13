@@ -1,9 +1,6 @@
 #include "Etapa.hpp"
-<<<<<<< HEAD
 
 unsigned int Etapa::id = 0;
-=======
->>>>>>> 3c62fb1fb2bae7dad245603f0f59dd11997a0b67
 
 // Construtor com parâmetros
 Etapa::Etapa(std::string& cronograma, std::string& status, 

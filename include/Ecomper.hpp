@@ -16,11 +16,11 @@ public:
     Ecomper(std::string nome, std::string cpf, std::string email, std::string cargo);
 
     // Getters
-    unsigned int getId() const;
-    const std::string& getNome() const;
-    const std::string& getCpf() const;
-    const std::string& getEmail() const;
-    const std::string& getCargo() const;
+    unsigned int getId();
+    std::string getNome();
+    std::string getCpf() ;
+    std::string getEmail() ;
+    std::string getCargo() ;
 
     // Setters
     void setId(unsigned int novoId);

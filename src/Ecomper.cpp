@@ -3,30 +3,30 @@
 unsigned int Ecomper::id = 0;
 
 // Construtor com parâmetros
-Ecomper::Ecomper(std::string& nome,  std::string& cpf, std::string& email,  std::string& cargo)
+Ecomper::Ecomper(std::string nome,  std::string cpf, std::string email,  std::string cargo)
     : nome(nome), cpf(cpf), email(email), cargo(cargo) 
 {
     id++;
 }
 
 // Getters
-unsigned int Ecomper::getId() const {
+unsigned int Ecomper::getId()  {
     return id;
 }
 
-const std::string& Ecomper::getNome() const {
+std::string Ecomper::getNome()  {
     return nome;
 }
 
-const std::string& Ecomper::getCpf() const {
+std::string Ecomper::getCpf()  {
     return cpf;
 }
 
-const std::string& Ecomper::getEmail() const {
+std::string Ecomper::getEmail()  {
     return email;
 }
 
-const std::string& Ecomper::getCargo() const {
+std::string Ecomper::getCargo() {
     return cargo;
 }
 

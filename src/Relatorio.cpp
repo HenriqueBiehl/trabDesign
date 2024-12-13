@@ -7,6 +7,7 @@ Relatorio::Relatorio(const std::string& tipo) : tipo(tipo) {
 }
 
 // Métodos
+
 void Relatorio::gerarRelatorioAtividade() const {
     std::cout << "Gerando relatório de atividades...\n";
     for (const auto& atividade : atividades) {
@@ -36,6 +37,27 @@ void Relatorio::gerarRelatorioPDF() const {
 
 void Relatorio::visualizarRelatorio() const {
     std::cout << "Visualizando relatório...\n";
+    std::cout << "Relatorio " << this->getTipo() << std::endl;
+    
+    if(!atividades.empty())
+        this->visualizarRelatorioAtividades();
+    else if (!itensFiscais.empty())
+        this->visualizarRelatorioItensFiscais();
+    else 
+        std::cout << "SEM DADOS A INFORMAR." << std::endl; 
+
+}
+
+void Relatorio::visualizarRelatorioAtividades() const {
+    for (const auto& atividade : atividades) {
+        std::cout << "Atividade: " << atividade.getNome() << "\n";
+    }
+}
+
+void Relatorio::visualizarRelatorioItensFiscais() const {
+    for (const auto& item : itensFiscais) {
+        std::cout << "Item: " << item.getTipo() << " - Valor: " << item.getValor() << "\n";
+    }
 }
 
 // Getters e Setters

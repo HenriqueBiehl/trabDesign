@@ -5,25 +5,25 @@
 
 class ItemFiscal {
 private:
-    std::time_t data;
+    std::string data;
     float valor;
     std::string tipo;
 
 public:
     // Construtor com parâmetros
-    ItemFiscal(const std::time_t& data, float valor, const std::string& tipo);
+    ItemFiscal(const std::string& data, float valor, const std::string& tipo);
 
     // Getters
-    std::time_t getData() const;
+    std::string getData() const;
     float getValor() const;
     const std::string& getTipo() const;
 
     // Setters
-    void setData(const std::time_t& novaData);
+    void setData(const std::string& novaData);
     void setValor(float novoValor);
     void setTipo(const std::string& novoTipo);
 
     // Métodos
-    static ItemFiscal cadastrarItemFiscal(const std::string& tipoItemFiscal, const std::time_t& data, 
+    static ItemFiscal cadastrarItemFiscal(const std::string& tipoItemFiscal, const std::string& data, 
                                           float valor, int idProjeto);
 };

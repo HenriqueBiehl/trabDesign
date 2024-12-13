@@ -4,22 +4,24 @@
 #include <vector>
 #include "Cliente.hpp"
 #include "Desenvolvedor.hpp"
+#include "ItemFiscal.hpp"
 
 class Projeto{
 private: 
-    unsigned int id; 
+    static unsigned int id; 
     Cliente cliente; 
     std::string dataInicio; 
     std::string prazo;
     std::string descricao; 
     std::string contrato; 
-    std::vector<Desenvolvedor> desenv;
+    std::vector<Desenvolvedor> devs;
+    std::vector<ItemFiscal> itensFisc; 
 
 public: 
     Projeto(Cliente cliente, std::string dataInicio, std::string prazo, std::string descricao, std::string contrato); 
 
     //Construtor vazio
-    Projeto(); 
+    Projeto();
 
     // Getter e Setter para 'id'
     unsigned int getId() const;
@@ -43,6 +45,7 @@ public:
 
     // Avalia se desenvolvedor esta cadastrado no projeto (no vector desenv). 
     // Se não estiver, adiciona ao vector e retorna 1. Retorna 0 caso contrário. 
-    int cadastrarDesenvolvedor(const Desenvolvedor& desenvolvedor); 
+    int cadastrarDesenvolvedor(Desenvolvedor& desenvolvedor); 
 
+    void associarItemFiscal(const ItemFiscal& fisc);
 };

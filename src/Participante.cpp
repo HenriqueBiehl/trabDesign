@@ -2,16 +2,17 @@
 #include "Participante.hpp"
 
 // Método para criar um Participante a partir de um Ecomper
-Participante Participante::criarParticipante(const Ecomper& e) {
-    return Participante(e.getId(), e.getNome(), e.getCpf(), e.getEmail(), e.getCargo(), "", "");
+Participante Participante::criarParticipante(Ecomper& e) {
+    return Participante(e.getId(), e.getNome(), e.getCpf(), e.getEmail(), e.getCargo() /*, "", ""*/);
 }
 
 // Construtor com parâmetros
-Participante::Participante(unsigned int id, const std::string& nome, const std::string& cpf, const std::string& email, 
-                           const std::string& cargo, const std::string& matricula, const std::string& curso)
-    : Ecomper(id, nome, cpf, email, cargo), matricula(matricula), curso(curso) {
+Participante::Participante(unsigned int id,  std::string nome,  std::string cpf,  std::string email, 
+                            std::string cargo /*, const std::string& matricula, const std::string& curso*/)
+    : Ecomper(nome, cpf, email, cargo) /*, matricula(matricula), cargo(cargo)*/ {
 }
 
+/*
 // Getters
 const std::string& Participante::getMatricula() const {
     return matricula;
@@ -29,3 +30,4 @@ void Participante::setMatricula(const std::string& novaMatricula) {
 void Participante::setCurso(const std::string& novoCurso) {
     curso = novoCurso;
 }
+*/

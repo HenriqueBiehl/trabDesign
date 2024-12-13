@@ -15,6 +15,8 @@ protected:
 public:
     Cliente(std::string nome, std::string cpfCnpj, std::string email, std::string  telefone, std::string contato);
     
+    Cliente();
+
     // Getter e Setter para 'nome'
     const std::string getNome() const;
 
