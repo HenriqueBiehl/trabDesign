@@ -51,3 +51,15 @@ void Atividade::associarParticipante(Participante& p) {
     this->participantes.push_back(p);
 }
 
+void Atividade::imprimirDados(){
+    std::cout << "Objetivo:" << objetivo << std::endl;
+    std::cout << "Duracao: " << duracao << std::endl;
+    std::cout << "Local:" << local << std::endl;
+    std::cout << "Resumo:" << resumoAtividade << std::endl;
+
+    std::cout << "Participantes:" << std::endl;
+    for (auto& p : this->participantes) {
+        p.imprimirDados(); 
+    }
+
+}

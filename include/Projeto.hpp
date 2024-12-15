@@ -9,7 +9,8 @@
 
 class Projeto{
 private: 
-    static unsigned int id; 
+    static unsigned int idCounter; 
+    unsigned int id; 
     Cliente cliente; 
     std::string dataInicio; 
     std::string prazo;
@@ -44,6 +45,8 @@ public:
     // Getter e Setter para 'contrato'
     const std::string& getContrato() const;
     void setContrato(const std::string& novoContrato);
+
+    std::vector<ItemFiscal> getItensFiscais();
 
     // Avalia se desenvolvedor esta cadastrado no projeto (no vector desenv). 
     // Se não estiver, adiciona ao vector e retorna 1. Retorna 0 caso contrário. 

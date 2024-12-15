@@ -8,39 +8,39 @@ Relatorio::Relatorio(const std::string& tipo) : tipo(tipo) {
 
 // Métodos
 
-void Relatorio::gerarRelatorioAtividade() const {
+void Relatorio::gerarRelatorioAtividade(std::vector<Atividade> atvs){
     std::cout << "Gerando relatório de atividades...\n";
-    for (const auto& atividade : atividades) {
-        std::cout << "Atividade -" << atividade.getLocal() << "\n";
-        std::cout << "  Objetivo:" << atividade.getObjetivo() << std::endl;
-        std::cout << "  Duracao: " << atividade.getDuracao() << std::endl;
-        std::cout << "  Resumo:  " << atividade.getResumoAtividade() << std::endl;
+    for (auto& a : atvs) {
+        adicionarAtividadeRelatorio(a);
     }
 }
 
-void Relatorio::gerarRelatorioItensFiscais() const {
+void Relatorio::gerarRelatorioItensFiscais(std::vector<Projeto> proj) {
     std::cout << "Gerando relatório de itens fiscais...\n";
-    for (const auto& item : itensFiscais) {
-        std::cout << "Item: " << item.getTipo() << " - Valor: " << item.getValor() << "\n";
-    }
+
+    for (auto& proj : proj) {
+        for(auto& fisc : proj.getItensFiscais()){
+            adicionarItemFiscalRelatorio(fisc);
+        }
+     }
 }
 
 void Relatorio::adicionarAtividadeRelatorio(const Atividade& a) {
-    atividades.push_back(a);
+    this->atividades.push_back(a);
 }
 
 void Relatorio::adicionarItemFiscalRelatorio(const ItemFiscal& f) {
-    itensFiscais.push_back(f);
+    this->itensFiscais.push_back(f);
 }
 
-void Relatorio::gerarRelatorioPDF() const {
+void Relatorio::gerarRelatorioPDF() {
     std::cout << "Gerando relatório em PDF...\n";
     // Implementação fictícia de geração de PDF
 }
 
-void Relatorio::visualizarRelatorio() const {
+void Relatorio::visualizarRelatorio() {
     std::cout << "Visualizando relatório...\n";
-    std::cout << "Relatorio " << this->getTipo() << std::endl;
+    std::cout << "Relatorio " << this->getTipo() << std::endl << std::endl;
     
     if(!atividades.empty())
         this->visualizarRelatorioAtividades();
@@ -49,20 +49,22 @@ void Relatorio::visualizarRelatorio() const {
     else 
         std::cout << "SEM DADOS A INFORMAR." << std::endl; 
 
+    std::cout << "----------------" << std::endl;
+
+
 }
 
-void Relatorio::visualizarRelatorioAtividades() const {
-    for (const auto& atividade : atividades) {
-        std::cout << "Atividade -" << atividade.getLocal() << "\n";
-        std::cout << "  Objetivo:" << atividade.getObjetivo() << std::endl;
-        std::cout << "  Duracao: " << atividade.getDuracao() << std::endl;
-        std::cout << "  Resumo:  " << atividade.getResumoAtividade() << std::endl;
+void Relatorio::visualizarRelatorioAtividades() {
+    for (auto& atv : atividades) {
+        atv.imprimirDados();
+        std::cout << std::endl;
     }
 }
 
-void Relatorio::visualizarRelatorioItensFiscais() const {
-    for (const auto& item : itensFiscais) {
-        std::cout << "Item: " << item.getTipo() << " - Valor: " << item.getValor() << "\n";
+void Relatorio::visualizarRelatorioItensFiscais() {
+    for (auto& item : itensFiscais) {
+        item.imprimirDados();
+        std::cout << std::endl;
     }
 }
 

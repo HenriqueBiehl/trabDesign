@@ -50,7 +50,9 @@ public:
 
     Atividade cadastrarAtividade(const std::string& duracao, const std::string& local, const std::string& objetivo, const std::string& resumo);
 
-    int adicionarParticipanteAtividade(Atividade a, unsigned int idEcomper);
+    void associarAtividade(Atividade& a);
+
+    int adicionarParticipanteAtividade(Atividade& a, unsigned int idEcomper);
 
     Ecomper* selecionarEcomper(unsigned int idEcomper);
     
@@ -58,4 +60,7 @@ public:
     
     void imprimirDesenvolvedores();
 
+    void imprimirMembros();
+
+    void imprimirAtividades();
 };

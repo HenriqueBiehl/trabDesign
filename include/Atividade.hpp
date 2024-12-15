@@ -35,4 +35,6 @@ public:
                                  const std::string& objetivo, const std::string& resumoAtividade);
     
     void associarParticipante(Participante& p);
+
+    void imprimirDados();
 };

@@ -5,7 +5,8 @@
 class Ecomper{
 
 private:
-    static unsigned int id;
+    static unsigned int idCounter;
+    unsigned int id;
     std::string nome;
     std::string cpf; 
     std::string email; 

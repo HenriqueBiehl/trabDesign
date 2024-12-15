@@ -1,6 +1,6 @@
 #include "Cliente.hpp"
 
-unsigned int Cliente::id=0; 
+unsigned int Cliente::idCounter=0; 
 
 Cliente::Cliente()
 {
@@ -8,9 +8,8 @@ Cliente::Cliente()
 
 
 Cliente::Cliente(std::string nome, std::string cpfCnpj, std::string email, std::string  telefone, std::string contato):
-nome(nome), cpfCnpj(cpfCnpj), email(email), telefone(telefone), contato(contato)
+id(idCounter++), nome(nome), cpfCnpj(cpfCnpj), email(email), telefone(telefone), contato(contato)
 {
-    id++;
 }
 
 // Getter e Setter para 'nome'

@@ -40,7 +40,7 @@ ItemFiscal ItemFiscal::cadastrarItemFiscal(const std::string& tipoItemFiscal, co
 }
 
 void ItemFiscal::imprimirDados(){
+    std::cout << "Tipo: " << tipo << std::endl;
     std::cout << "Data: " << data << std::endl;
     std::cout << "Valor: " << valor << std::endl;
-    std::cout << "Tipo: " << tipo << std::endl;
 }

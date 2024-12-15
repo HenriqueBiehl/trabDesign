@@ -72,21 +72,21 @@ Desenvolvedor* Ecomp::selecionarDesenvolvedor(unsigned int idDesenvolvedor){
 }
 
 
-Relatorio gerarRelatorio(std::string tipoRelatorio){
+Relatorio Ecomp::gerarRelatorio(std::string tipoRelatorio){
 
     Relatorio rel = Relatorio(tipoRelatorio);
-    
+    this->imprimirAtividades();
     if(tipoRelatorio.compare("Atividade") == 0)
-        rel.gerarRelatorioAtividade();
+        rel.gerarRelatorioAtividade(this->atividades);
     
     else if(tipoRelatorio.compare("Fiscal") == 0)
-        rel.gerarRelatorioItensFiscais();
+        rel.gerarRelatorioItensFiscais(this->proj);
 
 
     return rel;
 }
 
-Relatorio exibirRelatorio(Relatorio& rel, std::string tipoExibicao){
+Relatorio Ecomp::exibirRelatorio(Relatorio& rel, std::string tipoExibicao){
 
     if(tipoExibicao.compare("PDF") == 0)
         rel.gerarRelatorioPDF();
@@ -128,16 +128,22 @@ Atividade Ecomp::cadastrarAtividade( const std::string& duracao, const std::stri
     return a;
 }
 
-int Ecomp::adicionarParticipanteAtividade(Atividade a, unsigned int idEcomper){
+void Ecomp::associarAtividade(Atividade& a){
+    this->atividades.push_back(a);
+}
+
+int Ecomp::adicionarParticipanteAtividade(Atividade& a, unsigned int idEcomper){
 
     Ecomper *e = selecionarEcomper(idEcomper);
 
     if(e == NULL)
         return 0;
 
-    Participante participante(e->getId(), e->getNome(), e->getCpf(), e->getEmail(), e->getCargo());
+    Participante p = Participante(e->getId(), e->getNome(), e->getCpf(), e->getEmail(), e->getCargo());
 
-    a.associarParticipante(participante);
+    a.associarParticipante(p);
+
+    a.imprimirDados();
 
     return 1;
 }
@@ -172,4 +178,20 @@ void Ecomp::imprimirDesenvolvedores(){
     }
     std::cout << std::endl;
 
+}
+
+void Ecomp::imprimirMembros(){
+    std::cout << "---- Ecompers ----" << std::endl;
+    for (auto& e : this->membros) {
+        e.imprimirDados(); 
+    }
+    std::cout << std::endl;
+}
+
+void Ecomp::imprimirAtividades(){
+    std::cout << "---- Atividades ----" << std::endl;
+    for (auto& a : this->atividades) {
+        a.imprimirDados(); 
+    }
+    std::cout << std::endl;
 }

@@ -1,15 +1,14 @@
 #include "Projeto.hpp"
 
-unsigned int Projeto::id = 0;
+unsigned int Projeto::idCounter = 0;
 
 Projeto::Projeto(Cliente cliente,  std::string dataInicio, std::string prazo,
                    std::string descricao,  std::string contrato)
-    : cliente(cliente), dataInicio(dataInicio), prazo(prazo), descricao(descricao), contrato(contrato)
+    : id(idCounter++), cliente(cliente), dataInicio(dataInicio), prazo(prazo), descricao(descricao), contrato(contrato)
 {   
     devs = {};
     itensFisc = {};
     etapasProjeto = {};
-    id++;
 }
 
 // Construtor vazio
@@ -56,6 +55,11 @@ void Projeto::setDescricao(const std::string& novaDescricao) {
 const std::string& Projeto::getContrato() const {
     return contrato;
 }
+
+std::vector<ItemFiscal> Projeto::getItensFiscais(){
+    return this->itensFisc;
+}
+
 
 void Projeto::setContrato(const std::string& novoContrato) {
     contrato = novoContrato;

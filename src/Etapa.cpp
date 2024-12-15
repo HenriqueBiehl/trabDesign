@@ -1,12 +1,11 @@
 #include "Etapa.hpp"
 
-unsigned int Etapa::id = 0;
+unsigned int Etapa::idCounter = 0;
 
 // Construtor com parâmetros
 Etapa::Etapa(std::string& cronograma, std::string& status)
-    :cronograma(cronograma), status(status)
+    : id(idCounter++), cronograma(cronograma), status(status)
 {
-    id++;
 }
 
 // Getters

@@ -5,7 +5,8 @@
 class Cliente {
     
 protected:
-    static unsigned int id;
+    static unsigned int idCounter;
+    unsigned int id;
     std::string nome;
     std::string cpfCnpj;
     std::string email;

@@ -4,26 +4,28 @@
 #include <vector>
 #include "Atividade.hpp"
 #include "ItemFiscal.hpp"
+#include "Projeto.hpp"
 
 class Relatorio {
 private:
     std::string tipo;
     std::vector<Atividade> atividades;
     std::vector<ItemFiscal> itensFiscais;
+    std::vector<Projeto> projetos;
 
 public:
     // Construtor
     Relatorio(const std::string& tipo);
 
     // Métodos
-    void gerarRelatorioAtividade() const;
-    void gerarRelatorioItensFiscais() const;
+    void gerarRelatorioAtividade(std::vector<Atividade> atvs);
+    void gerarRelatorioItensFiscais(std::vector<Projeto> proj);
     void adicionarAtividadeRelatorio(const Atividade& a);
     void adicionarItemFiscalRelatorio(const ItemFiscal& f);
-    void gerarRelatorioPDF() const;
-    void visualizarRelatorio() const;
-    void visualizarRelatorioAtividades() const;
-    void visualizarRelatorioItensFiscais() const;
+    void gerarRelatorioPDF();
+    void visualizarRelatorio();
+    void visualizarRelatorioAtividades();
+    void visualizarRelatorioItensFiscais();
 
 
     // Getters e Setters

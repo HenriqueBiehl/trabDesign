@@ -5,7 +5,8 @@
 class Etapa{
 
 private:
-    static unsigned int id; 
+    static unsigned int idCounter; 
+    unsigned int id; 
     std::string cronograma;
     std::string status; 
 
