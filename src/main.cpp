@@ -65,7 +65,7 @@ int main() {
                     cout << "Descrição: ";
                     getline (cin >> ws, descricao);
 
-                    cout << "Contrato:";
+                    cout << "Contrato: ";
                     getline (cin >> ws, contrato);
 
                     Projeto p = Ecomp.cadastrarProjeto(cliente_1, dataInicio, prazo, descricao, contrato);
@@ -124,7 +124,7 @@ int main() {
                     cout << "Objetivo: ";
                     getline (cin >> ws, objetivo);
 
-                    cout << "Resumo da Atividade:";
+                    cout << "Resumo da Atividade: ";
                     getline (cin >> ws, resumoAtividade);
 
                     Atividade a = Ecomp.cadastrarAtividade(duracao, local, objetivo, resumoAtividade);
@@ -133,7 +133,7 @@ int main() {
                     do{
                         Ecomp.imprimirMembros();
 
-                        cout << "Escolha um membro pelo ID:";
+                        cout << "Escolha um membro pelo ID: ";
                         cin >> idEcomper; 
                         if (cin.fail()) {
                             cout << "ID inválido" << endl;
@@ -171,7 +171,7 @@ int main() {
                     cout << "Escolha um projeto pelo ID: ";
                     cin >> idProjeto;
                     if (cin.fail()) {
-                        cout << "ID inválido" << endl;
+                        cout << "ID inválido!" << endl;
                         cin.clear();
                         cin.ignore(1000, '\n');
                         break;
@@ -193,6 +193,12 @@ int main() {
 
                     cout << "Digite o valor do Item Fiscal: ";
                     cin >> valor;
+                    if (cin.fail()) {
+                        cout << "Valor inválido!" << endl;
+                        cin.clear();
+                        cin.ignore(1000, '\n');
+                        break;
+                    }
 
                     // Cadastra o Item Fiscal no projeto
                     ItemFiscal item = Ecomp.cadastrarItemFiscal(tipoItemFiscal, data, valor, idProjeto);
@@ -214,7 +220,7 @@ int main() {
                     cout << "Escolha um projeto pelo ID: ";
                     cin >> idProjeto;
                     if (cin.fail()) {
-                        cout << "ID inválido" << endl;
+                        cout << "ID inválido!" << endl;
                         cin.clear();
                         cin.ignore(1000, '\n');
                         break;
@@ -233,7 +239,7 @@ int main() {
                         cout << "Escolha um desenvolvedor pelo ID: ";
                         cin >> idDesenvolvedor;
                         if (cin.fail()) {
-                            cout << "ID inválido" << endl;
+                            cout << "ID inválido!" << endl;
                             cin.clear();
                             cin.ignore(1000, '\n');
                         } else {
@@ -241,7 +247,7 @@ int main() {
                                 cout << endl << "Desenvolvedor Cadastrado com sucesso!" << endl;
                                 p->imprimirDados();
                             } else {
-                                cout << "Desenvolvedor não encontrado" << endl;
+                                cout << "Desenvolvedor não encontrado!" << endl;
                             }
                         }
 
@@ -256,7 +262,7 @@ int main() {
                     string tipoRelatorio;
                     string tipoExibicao;
                     cout << "Escolhido a opção: Gerar Relatório.\n"; 
-                    cout << "Os tipos de Relatório são: Fiscal e Atividade\n";
+                    cout << "Os tipos de Relatório são: Fiscal e Atividade.\n";
 
                     cout << "Tipo Relatório: ";
                     getline (cin >> ws, tipoRelatorio);
@@ -267,17 +273,17 @@ int main() {
                     Relatorio rel = Ecomp.gerarRelatorio(tipoRelatorio);
                     cout << endl << "Relatório gerado com sucesso!" << endl;
 
-                    cout << "Escolha o modo de Exibição: PDF ou Visualizacao" << endl;
+                    cout << "Escolha o modo de Exibição: PDF ou Visualizacao." << endl;
                     cout << "Opção de Exibição: ";
                     getline (cin >> ws, tipoExibicao);
 
                     if (tipoExibicao != "PDF" && tipoExibicao != "Visualizacao") {
-                        cout << "Tipo  de exibição inválido" << endl;
+                        cout << "Tipo de exibição inválido!" << endl;
                         break;
                     }
 
                     Ecomp.exibirRelatorio(rel, tipoExibicao);
-                    cout << endl << "Sucesso ao Exibir Relatório" << endl;
+                    cout << endl << "Sucesso ao Exibir Relatório." << endl;
                 }
                 break;
             case 7:
@@ -294,7 +300,7 @@ int main() {
                     cout << "Escolha um projeto pelo ID: ";
                     cin >> idProjeto;
                     if (cin.fail()) {
-                        cout << "ID inválido" << endl;
+                        cout << "ID inválido!" << endl;
                         cin.clear();
                         cin.ignore(1000, '\n');
                         break;
