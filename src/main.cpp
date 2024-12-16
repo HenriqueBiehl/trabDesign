@@ -135,12 +135,19 @@ int main() {
 
                         cout << "Escolha um membro pelo ID:";
                         cin >> idEcomper; 
-
-                        if(Ecomp.adicionarParticipanteAtividade(a, idEcomper))
-                            cout << "Ecomper Adicionado a Atividade com sucesso!" << endl;
-
+                        if (cin.fail()) {
+                            cout << "ID inválido" << endl;
+                            cin.clear();
+                            cin.ignore(1000, '\n');
+                        } else {
+                            if(Ecomp.adicionarParticipanteAtividade(a, idEcomper))
+                                cout << "Ecomper Adicionado a Atividade com sucesso!" << endl;
+                            else
+                                cout << "Ecomper não encontrado!" << endl;
+                        }
                         cout << "Deseja adicionar outro participante a atividade? (s/n): ";
                         cin >> continuar;
+
                     }  while (continuar == 's' || continuar == 'S');
 
                     Ecomp.associarAtividade(a);
@@ -163,6 +170,12 @@ int main() {
                     // Seleciona o projeto pelo ID
                     cout << "Escolha um projeto pelo ID: ";
                     cin >> idProjeto;
+                    if (cin.fail()) {
+                        cout << "ID inválido" << endl;
+                        cin.clear();
+                        cin.ignore(1000, '\n');
+                        break;
+                    }
 
                     // Busca o projeto
                     Projeto* p = Ecomp.selecionarProjeto(idProjeto);
@@ -200,6 +213,12 @@ int main() {
 
                     cout << "Escolha um projeto pelo ID: ";
                     cin >> idProjeto;
+                    if (cin.fail()) {
+                        cout << "ID inválido" << endl;
+                        cin.clear();
+                        cin.ignore(1000, '\n');
+                        break;
+                    }
 
                     Projeto* p = Ecomp.selecionarProjeto(idProjeto);
 
@@ -213,11 +232,18 @@ int main() {
 
                         cout << "Escolha um desenvolvedor pelo ID: ";
                         cin >> idDesenvolvedor;
-
-                        Ecomp.cadastrarDesenvolvedor(*p, idDesenvolvedor);
-
-                        cout << endl << "Desenvolvedor Cadastrado com sucesso!" << endl;
-                        p->imprimirDados();
+                        if (cin.fail()) {
+                            cout << "ID inválido" << endl;
+                            cin.clear();
+                            cin.ignore(1000, '\n');
+                        } else {
+                            if (Ecomp.cadastrarDesenvolvedor(*p, idDesenvolvedor)) {
+                                cout << endl << "Desenvolvedor Cadastrado com sucesso!" << endl;
+                                p->imprimirDados();
+                            } else {
+                                cout << "Desenvolvedor não encontrado" << endl;
+                            }
+                        }
 
                         cout << "Deseja adicionar outro desenvolvedor ao projeto? (s/n): ";
                         cin >> continuar;
@@ -226,68 +252,82 @@ int main() {
                 }
                 break;
             case 6:
-                    {
-                        string tipoRelatorio;
-                        string tipoExibicao;
-                        cout << "Escolhido a opção: Gerar Relatório.\n"; 
-                        cout << "Os tipos de Relatório são: Fiscal e Atividade\n";
+                {
+                    string tipoRelatorio;
+                    string tipoExibicao;
+                    cout << "Escolhido a opção: Gerar Relatório.\n"; 
+                    cout << "Os tipos de Relatório são: Fiscal e Atividade\n";
 
-                        cout << "Tipo Relatório: ";
-                        getline (cin >> ws, tipoRelatorio);
-
-                        Relatorio rel = Ecomp.gerarRelatorio(tipoRelatorio);
-                        cout << endl << "Relatório gerado com sucesso!" << endl;
-
-                        cout << "Escolha o modo de Exibição: PDF ou Visualizacao" << endl;
-                        cout << "Opção de Exibição: ";
-                        getline (cin >> ws, tipoExibicao);
-
-                        Ecomp.exibirRelatorio(rel, tipoExibicao);
-
-                        cout << endl << "Sucesso ao Exibir Relatório" << endl;
-                    }
-                    break;
-            case 7: {
-                        unsigned int idProjeto;
-                        string cronograma, statusProjeto;
-
-                        cout << "Escolhido a opção: Adicionar Etapa de Desenvolvimento.\n";
-
-                        // Exibe os projetos disponíveis
-                        Ecomp.imprimirProjetos();
-
-                        // Seleciona o projeto pelo ID
-                        cout << "Escolha um projeto pelo ID: ";
-                        cin >> idProjeto;
-
-                        // Busca o projeto
-                        Projeto* p = Ecomp.selecionarProjeto(idProjeto);
-                        if (p == nullptr) {
-                            cout << "Projeto não encontrado!\n";
-                            break;
-                        }
-
-                        // Captura os dados da nova etapa
-                        cout << "Digite o cronograma da Etapa: ";
-                        getline(cin >> ws, cronograma);
-
-                        cout << "Digite o status da Etapa: ";
-                        getline(cin >> ws, statusProjeto);
-
-                        // Cadastra a nova etapa usando a função existente
-                        Etapa novaEtapa = Ecomp.cadastrarEtapaDesenvolvimento(idProjeto, cronograma, statusProjeto);
-
-                        cout << "Etapa adicionada com sucesso!\n";
-                        novaEtapa.imprimirDados(); // Exibe os dados da nova etapa
-
+                    cout << "Tipo Relatório: ";
+                    getline (cin >> ws, tipoRelatorio);
+                    if (tipoRelatorio != "Fiscal" && tipoRelatorio != "Atividade") {
+                        cout << "Tipo de relatório inválido" << endl;
                         break;
                     }
+                    Relatorio rel = Ecomp.gerarRelatorio(tipoRelatorio);
+                    cout << endl << "Relatório gerado com sucesso!" << endl;
+
+                    cout << "Escolha o modo de Exibição: PDF ou Visualizacao" << endl;
+                    cout << "Opção de Exibição: ";
+                    getline (cin >> ws, tipoExibicao);
+
+                    if (tipoExibicao != "PDF" && tipoExibicao != "Visualizacao") {
+                        cout << "Tipo  de exibição inválido" << endl;
+                        break;
+                    }
+
+                    Ecomp.exibirRelatorio(rel, tipoExibicao);
+                    cout << endl << "Sucesso ao Exibir Relatório" << endl;
+                }
+                break;
+            case 7:
+                {
+                    unsigned int idProjeto;
+                    string cronograma, statusProjeto;
+
+                    cout << "Escolhido a opção: Adicionar Etapa de Desenvolvimento.\n";
+
+                    // Exibe os projetos disponíveis
+                    Ecomp.imprimirProjetos();
+
+                    // Seleciona o projeto pelo ID
+                    cout << "Escolha um projeto pelo ID: ";
+                    cin >> idProjeto;
+                    if (cin.fail()) {
+                        cout << "ID inválido" << endl;
+                        cin.clear();
+                        cin.ignore(1000, '\n');
+                        break;
+                    }
+
+                    // Busca o projeto
+                    Projeto* p = Ecomp.selecionarProjeto(idProjeto);
+                    if (p == nullptr) {
+                        cout << "Projeto não encontrado!\n";
+                        break;
+                    }
+
+                    // Captura os dados da nova etapa
+                    cout << "Digite o cronograma da Etapa: ";
+                    getline(cin >> ws, cronograma);
+
+                    cout << "Digite o status da Etapa: ";
+                    getline(cin >> ws, statusProjeto);
+
+                    // Cadastra a nova etapa usando a função existente
+                    Etapa novaEtapa = Ecomp.cadastrarEtapaDesenvolvimento(idProjeto, cronograma, statusProjeto);
+
+                    cout << "Etapa adicionada com sucesso!\n";
+                    novaEtapa.imprimirDados(); // Exibe os dados da nova etapa
+
+                    break;
+                }
 
             default:
-                    {
-                        cout << "Opção inválida! Tente novamente.\n";
-                        break;
-                    }
+                {
+                    cout << "Opção inválida! Tente novamente.\n";
+                    break;
+                }
         }
 
     } while (opcao != 0);
