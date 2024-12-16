@@ -23,14 +23,14 @@ int main() {
     cliente_1.setTelefone("(206) 342-8631");
 
     Desenvolvedor dev1("Marcos" , "123456789", "marc@os.com", "Assessor de Projetos");
-    //Desenvolvedor dev2("Steven" , "77711133354", "stv@en.com", "Assessor de Qualidade");
-    //Desenvolvedor dev3("Naomi" , "7978654202", "naomi@guerrilla.com", "Gerente de Admnistrativo Financeiro");
-    //Desenvolvedor dev4("Laura" , "125603444", "lauRa@spymail.com", "Diretora de Comunicação");
+    Desenvolvedor dev2("Steven" , "77711133354", "stv@en.com", "Assessor de Qualidade");
+    Desenvolvedor dev3("Naomi" , "7978654202", "naomi@guerrilla.com", "Gerente de Admnistrativo Financeiro");
+    Desenvolvedor dev4("Laura" , "125603444", "lauRa@spymail.com", "Diretora de Comunicação");
 
     Ecomp.associarDesenvolvedor(dev1);
-    //Ecomp.associarDesenvolvedor(dev2);
-    //Ecomp.associarDesenvolvedor(dev3);
-    //Ecomp.associarDesenvolvedor(dev4);
+    Ecomp.associarDesenvolvedor(dev2);
+    Ecomp.associarDesenvolvedor(dev3);
+    Ecomp.associarDesenvolvedor(dev4);
 
     do {
         cout << "\nMenu de Opções:\n";
@@ -38,11 +38,10 @@ int main() {
         cout << "1. Cadastrar Projeto\n";
         cout << "2. Cadastrar Ecompers\n";
         cout << "3. Cadastrar Atividades\n";
-        cout << "4. Cadastrar Finanças\n";
+        cout << "4. Vincular Finanças ao Projeto\n";
         cout << "5. Vincular Ecomper ao Projeto\n";
-        cout << "6. Vincular Finanças ao Projeto\n";
-        cout << "7. Gerar Relatório\n";
-        cout << "8. Adicionar Etapa de Desenvolvimento\n";
+        cout << "6. Gerar Relatório\n";
+        cout << "7. Adicionar Etapa de Desenvolvimento\n";
         cout << "Escolha uma opção: ";
         cin >> opcao;
 
@@ -113,6 +112,7 @@ int main() {
                 {
                     string duracao, local, objetivo, resumoAtividade;
                     unsigned int idEcomper;
+                    char continuar;
                     cout << "Escolhido a opção: Cadastrar Atividade. Digite as informações a seguir:\n";
 
                     cout << "Duracao: ";
@@ -129,14 +129,19 @@ int main() {
 
                     Atividade a = Ecomp.cadastrarAtividade(duracao, local, objetivo, resumoAtividade);
 
-                    Ecomp.imprimirMembros();
+                    cout << "Adicione participantes a atividade: " << endl << endl;
+                    do{
+                        Ecomp.imprimirMembros();
 
-                    cout << "Escolha um membro pelo ID:";
+                        cout << "Escolha um membro pelo ID:";
+                        cin >> idEcomper; 
 
-                    cin >> idEcomper; 
+                        if(Ecomp.adicionarParticipanteAtividade(a, idEcomper))
+                            cout << "Ecomper Adicionado a Atividade com sucesso!" << endl;
 
-                    if(Ecomp.adicionarParticipanteAtividade(a, idEcomper))
-                        cout << "Ecomper Adicionado a Atividade com sucesso!" << endl;
+                        cout << "Deseja adicionar outro participante a atividade? (s/n): ";
+                        cin >> continuar;
+                    }  while (continuar == 's' || continuar == 'S');
 
                     Ecomp.associarAtividade(a);
 
@@ -146,32 +151,42 @@ int main() {
                 break; 
             case 4:
                 {
-                    cout << "Escolhido a opção: Cadastrar Finanças.\n";
-
+                    unsigned int idProjeto;
                     string tipoItemFiscal, data;
-                    float valor; 
-                    unsigned int idProjeto; 
+                    float valor;
 
-                    Ecomp.imprimirProjetos(); 
-                    cout << "Escolha um projeto pelo ID:";
-                    cin >> idProjeto; 
+                    cout << "Escolhido a opção: Vincular Finanças ao Projeto.\n";
 
-                    cout << "Insira as Informações do Item Fiscal:" << endl;
+                    // Exibe os projetos disponíveis
+                    Ecomp.imprimirProjetos();
 
-                    cout << "Tipo: ";
-                    getline (cin >> ws, tipoItemFiscal);
+                    // Seleciona o projeto pelo ID
+                    cout << "Escolha um projeto pelo ID: ";
+                    cin >> idProjeto;
 
-                    cout << "Data: ";
-                    getline (cin >> ws, data);
+                    // Busca o projeto
+                    Projeto* p = Ecomp.selecionarProjeto(idProjeto);
+                    if (p == nullptr) {
+                        cout << "Projeto não encontrado!\n";
+                        break;
+                    }
 
-                    cout << "Valor: ";
+                    // Captura os dados do Item Fiscal
+                    cout << "Digite o tipo do Item Fiscal: ";
+                    getline(cin >> ws, tipoItemFiscal);
+
+                    cout << "Digite a data do Item Fiscal: ";
+                    getline(cin >> ws, data);
+
+                    cout << "Digite o valor do Item Fiscal: ";
                     cin >> valor;
 
-                    ItemFiscal fisc = Ecomp.cadastrarItemFiscal(tipoItemFiscal, data, valor, idProjeto);
+                    // Cadastra o Item Fiscal no projeto
+                    ItemFiscal item = Ecomp.cadastrarItemFiscal(tipoItemFiscal, data, valor, idProjeto);
 
-                    cout << endl << "Item Fiscal:" << endl <<endl; 
-                    fisc.imprimirDados();
-                    cout << endl << "Cadastrado com sucesso!" << endl;
+                    cout << "\nItem Fiscal cadastrado com sucesso!\n";
+                    item.imprimirDados(); // Exibe os dados do Item Fiscal
+
                 }
                 break;
             case 5:
@@ -210,53 +225,12 @@ int main() {
                     } while (continuar == 's' || continuar == 'S');
                 }
                 break;
-
-            case 6: {
-                        unsigned int idProjeto;
-                        string tipoItemFiscal, data;
-                        float valor;
-
-                        cout << "Escolhido a opção: Vincular Finanças ao Projeto.\n";
-
-                        // Exibe os projetos disponíveis
-                        Ecomp.imprimirProjetos();
-
-                        // Seleciona o projeto pelo ID
-                        cout << "Escolha um projeto pelo ID: ";
-                        cin >> idProjeto;
-
-                        // Busca o projeto
-                        Projeto* p = Ecomp.selecionarProjeto(idProjeto);
-                        if (p == nullptr) {
-                            cout << "Projeto não encontrado!\n";
-                            break;
-                        }
-
-                        // Captura os dados do Item Fiscal
-                        cout << "Digite o tipo do Item Fiscal: ";
-                        getline(cin >> ws, tipoItemFiscal);
-
-                        cout << "Digite a data do Item Fiscal: ";
-                        getline(cin >> ws, data);
-
-                        cout << "Digite o valor do Item Fiscal: ";
-                        cin >> valor;
-
-                        // Cadastra o Item Fiscal no projeto
-                        ItemFiscal item = Ecomp.cadastrarItemFiscal(tipoItemFiscal, data, valor, idProjeto);
-
-                        cout << "\nItem Fiscal cadastrado com sucesso!\n";
-                        item.imprimirDados(); // Exibe os dados do Item Fiscal
-
-                        break;
-                    }
-
-            case 7:
+            case 6:
                     {
                         string tipoRelatorio;
                         string tipoExibicao;
                         cout << "Escolhido a opção: Gerar Relatório.\n"; 
-                        cout << "Os tipos de Relatório são: Fiscal e Atividades\n";
+                        cout << "Os tipos de Relatório são: Fiscal e Atividade\n";
 
                         cout << "Tipo Relatório: ";
                         getline (cin >> ws, tipoRelatorio);
@@ -273,7 +247,7 @@ int main() {
                         cout << endl << "Sucesso ao Exibir Relatório" << endl;
                     }
                     break;
-            case 8: {
+            case 7: {
                         unsigned int idProjeto;
                         string cronograma, statusProjeto;
 

@@ -75,7 +75,7 @@ Desenvolvedor* Ecomp::selecionarDesenvolvedor(unsigned int idDesenvolvedor){
 Relatorio Ecomp::gerarRelatorio(std::string tipoRelatorio){
 
     Relatorio rel = Relatorio(tipoRelatorio);
-    this->imprimirAtividades();
+
     if(tipoRelatorio.compare("Atividade") == 0)
         rel.gerarRelatorioAtividade(this->atividades);
     
@@ -164,7 +164,8 @@ void Ecomp::imprimirProjetos(){
 
     std::cout << "**** Projetos ****" << std::endl;
     for (auto& p : this->proj) {
-        p.imprimirDados(); 
+        p.imprimirDados();
+        std::cout << std::endl;
     }
     std::cout << std::endl;
 
@@ -175,6 +176,7 @@ void Ecomp::imprimirDesenvolvedores(){
     std::cout << "---- Desenvolvedores ----" << std::endl;
     for (auto& d : this->devs) {
         d.imprimirDados(); 
+        std::cout << std::endl;
     }
     std::cout << std::endl;
 
@@ -184,6 +186,7 @@ void Ecomp::imprimirMembros(){
     std::cout << "---- Ecompers ----" << std::endl;
     for (auto& e : this->membros) {
         e.imprimirDados(); 
+        std::cout << std::endl;
     }
     std::cout << std::endl;
 }
@@ -192,6 +195,7 @@ void Ecomp::imprimirAtividades(){
     std::cout << "---- Atividades ----" << std::endl;
     for (auto& a : this->atividades) {
         a.imprimirDados(); 
+        std::cout << std::endl;
     }
     std::cout << std::endl;
 }

@@ -10,6 +10,7 @@ Relatorio::Relatorio(const std::string& tipo) : tipo(tipo) {
 
 void Relatorio::gerarRelatorioAtividade(std::vector<Atividade> atvs){
     std::cout << "Gerando relatório de atividades...\n";
+    
     for (auto& a : atvs) {
         adicionarAtividadeRelatorio(a);
     }
@@ -41,7 +42,7 @@ void Relatorio::gerarRelatorioPDF() {
 void Relatorio::visualizarRelatorio() {
     std::cout << "Visualizando relatório...\n";
     std::cout << "Relatorio " << this->getTipo() << std::endl << std::endl;
-    
+
     if(!atividades.empty())
         this->visualizarRelatorioAtividades();
     else if (!itensFiscais.empty())
