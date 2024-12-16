@@ -195,7 +195,7 @@ int main() {
                     cin >> valor;
 
                     // Cadastra o Item Fiscal no projeto
-                    ItemFiscal item = Ecomp.cadastrarItemFiscal(tipoItemFiscal, data, valor, idProjeto);
+                    ItemFiscal item = Ecomp.cadastrarItemFiscal(tipoItemFiscal, data, valor, *p);
 
                     cout << "\nItem Fiscal cadastrado com sucesso!\n";
                     item.imprimirDados(); // Exibe os dados do Item Fiscal

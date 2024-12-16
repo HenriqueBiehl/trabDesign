@@ -44,7 +44,7 @@ public:
 
     Relatorio exibirRelatorio(Relatorio& rel, std::string tipoExibicao);
 
-    ItemFiscal cadastrarItemFiscal(std::string tipoItemFiscal, std::string data, float valor, unsigned int idProjeto);
+    ItemFiscal cadastrarItemFiscal(std::string tipoItemFiscal, std::string data, float valor, Projeto& p);
 
     Etapa cadastrarEtapaDesenvolvimento(unsigned int idProjeto, std::string cronograma, std::string statusProjeto);
 
