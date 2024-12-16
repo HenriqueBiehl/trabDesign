@@ -99,13 +99,11 @@ Relatorio Ecomp::exibirRelatorio(Relatorio& rel, std::string tipoExibicao){
 
 }
 
-ItemFiscal Ecomp::cadastrarItemFiscal(std::string tipoItemFiscal, std::string data, float valor, unsigned int idProjeto){
-
-    Projeto *p = selecionarProjeto(idProjeto);
+ItemFiscal Ecomp::cadastrarItemFiscal(std::string tipoItemFiscal, std::string data, float valor, Projeto& p){
 
     ItemFiscal fisc(data, valor, tipoItemFiscal);
 
-    p->associarItemFiscal(fisc);
+    p.associarItemFiscal(fisc);
 
     return fisc;
 }

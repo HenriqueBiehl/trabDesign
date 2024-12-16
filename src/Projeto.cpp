@@ -115,6 +115,7 @@ void Projeto::imprimirDados(){
     std::cout << "Desenvolvedores:" << std::endl;
     for (auto& d : this->devs) {
         d.imprimirDados(); 
+        std::cout << std::endl;
     }
 
     std::cout << std::endl; 
@@ -122,6 +123,8 @@ void Projeto::imprimirDados(){
     std::cout << "Itens Fiscais:" << std::endl;
     for (auto& f : this->itensFisc) {
         f.imprimirDados(); 
+        std::cout << std::endl;
+
     }
 
     std::cout << std::endl; 
@@ -129,6 +132,7 @@ void Projeto::imprimirDados(){
     std::cout << "Etapas:" << std::endl;
     for (auto& e : this->etapasProjeto) {
         e.imprimirDados(); 
+        std::cout << std::endl;
     }
 
     std::cout << std::endl; 
